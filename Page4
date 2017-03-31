@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:src="@drawable/home"
+                android:scaleType="fitXY"
+                android:onClick="PageMain"
+                android:id="@+id/home"
+                />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Question 2"
+                android:textColor="#E91E63"
+                android:textSize="24sp"
+                android:fontFamily="casual"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_marginTop="8dp"
+                />
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:src="@drawable/quit"
+                android:scaleType="fitXY"
+                android:id="@+id/exit"
+                android:layout_alignParentRight="true"
+                android:onClick="last"
+
+
+
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="153dp"
+        android:src="@drawable/two"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="True or false? Pi can be correctly written as a fraction."
+        android:textStyle="normal"
+        android:textColor="#1A237E"
+        android:textSize="24sp"
+        android:lineSpacingMultiplier="1"
+        android:layout_margin="16dp"
+        android:textAlignment="center"
+        android:id="@+id/quistion1"/>
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp">
+
+        <RadioButton android:id="@+id/q2a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="True"
+            android:layout_marginRight="54dp"
+            android:onClick="checkAnswerQ2"
+
+            />
+        <RadioButton android:id="@+id/q2b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="False"
+            android:layout_marginLeft="54dp"
+            android:onClick="checkAnswerQ2"
+            />
+
+
+    </RadioGroup>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1 point"
+        android:layout_marginLeft="32dp"
+        android:textSize="18sp"
+        android:padding="8dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:fontFamily="casual"
+                android:textColor="#DCEDC8"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:onClick="PageThree"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:textColor="#DCEDC8"
+                android:layout_weight="1"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="16dp"
+                android:onClick="PageFive"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
+
+</ScrollView>
