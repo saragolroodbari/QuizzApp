@@ -1,12 +1,15 @@
 package com.example.android.learnmath;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         setContentView(R.layout.activity_main);
     }
 
@@ -34,13 +38,23 @@ public class MainActivity extends AppCompatActivity {
     String greetingMasage ="";
     String sumUp ="yes";
     String greetOne="";
-    int score =0;
+    String scoreMessage="";
+    int score = 0;
+    int counterQ1 = 0;
+    int counterQ2 = 0;
+    int counterQ3 = 0;
     boolean submitBotten =false;
     boolean hasEmail= false;
+
+    //Goto Pages//
 
     public void PageMain (View view){
 
         setContentView(R.layout.activity_main);
+        score=0;
+        markingMessage(score);
+        Log.v("MarkingActivity", scoreMessage);
+
     }
 
     public void PageOne (View view){
@@ -49,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         score=0;
         submitBotten=false;
         setContentView(R.layout.page1);
+
     }
 
     public void PageTwo (View view){
@@ -77,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public void last (View view){
 
         setContentView(R.layout.last);
@@ -94,6 +108,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // Displays//
+
+    public void displayGreeting(String yourName) {
+        TextView GreetingTextView = (TextView) findViewById(R.id.greeting);
+        greetingMasage = "Hello "+ yourName +"!";
+        GreetingTextView.setText(greetingMasage);
+    }
+
+    public void displayGreetingLast(String yourName) {
+        TextView GreetingTextView = (TextView) findViewById(R.id.greetingLast);
+        greetingMasage = "Thank you "+ yourName +"!";
+        GreetingTextView.setText(greetingMasage);
+    }
+
+    //Submission//
+
+    public void submitInfo (View view)   {
+        submitBotten = true;
+        email();
+        name();
+        Log.v("NameActivity", yourName);
+        Log.v("EmailActivity", yourEmail);
+    }
+
     private String name (){
         EditText text = (EditText)findViewById(R.id.Name);
         yourName = text.getText().toString();
@@ -107,28 +145,9 @@ public class MainActivity extends AppCompatActivity {
         return yourEmail;
     }
 
+    // Marking and question check//
 
-    private void displayGreeting(String yourName) {
-        TextView GreetingTextView = (TextView) findViewById(R.id.greeting);
-        greetingMasage = "Hello "+ yourName +"!";
-        GreetingTextView.setText(greetingMasage);
-    }
-
-    private void displayGreetingLast(String yourName) {
-        TextView GreetingTextView = (TextView) findViewById(R.id.greetingLast);
-        greetingMasage = "Thank you "+ yourName +"!";
-        GreetingTextView.setText(greetingMasage);
-    }
-
-    public void submitInfo (View view)   {
-        submitBotten = true;
-        email();
-        name();
-        Log.v("NameActivity", yourName);
-        Log.v("EmailActivity", yourEmail);
-    }
-
-    private void marking (int score){
+    public void marking (int score){
         if (score >= 3){
             greetOne = "You are Awesome";}
         else{
@@ -138,35 +157,54 @@ public class MainActivity extends AppCompatActivity {
         mark.setText("Your mark is: " + score + "/5 " + "\n" + greetOne);
     }
 
+    public String markingMessage (int score){
+        scoreMessage  = "Mark is " + score;
+        return scoreMessage;
+    }
+
     public void checkAnswerQ1(View view) {
         // Is the button now checked?
         boolean checked = ((RadioButton) view).isChecked();
-        score=0;
 
         // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.q1a:
                 if (checked)
                     //Wrong
-                    score = score +0;
+                    if(counterQ1==0){
+                        score = score;}
+                    else if(counterQ1==1){
+                        score -=2;
+                        counterQ1 =0;}
                     break;
             case R.id.q1b:
                 if (checked)
                     // Wrong
-                    score = score +0;
+                    if(counterQ1==0){
+                        score = score;}
+                    else if(counterQ1==1){
+                        score -=2;
+                        counterQ1 =0;}
                     break;
             case R.id.q1c:
                 if (checked)
                     //Right
-                    score = score +2;
+                    if(counterQ1==0)
+                    {  score +=2;
+                        counterQ1+=1;
+                    }
                     break;
             case R.id.q1d:
                 if (checked)
                     //Wrong
-                    score = score +0;
+                    if(counterQ1==0){
+                        score = score;}
+                    else if(counterQ1==1){
+                        score -=2;
+                        counterQ1 =0;}
                     break;
         }
-        String scoreMessage = "Mark is" + score;
+        markingMessage(score);
         Log.v("MarkingActivity", scoreMessage);
 
     }
@@ -178,18 +216,26 @@ public class MainActivity extends AppCompatActivity {
         // Check which radio button was clicked
         switch(view.getId()) {
             case R.id.q2a:
-                if (checked)
+                if (checked){
                     //Wrong
-                    score = score +0;
-                break;
+                    if(counterQ2==0){
+                    score = score;}
+                    else if(counterQ2==1){
+                        score -=1;
+                        counterQ2 =0;}
+
+                    break;}
             case R.id.q2b:
-                if (checked)
+                if (checked){
                     // Right
-                    score = score +1;
-                break;
+                    if(counterQ2==0)
+                    {  score = score +1;
+                        counterQ2+=1;
+                    }
+                    break;}
 
         }
-        String scoreMessage = "Mark is" + score;
+        markingMessage(score);
         Log.v("MarkingActivity", scoreMessage);
 
     }
@@ -203,28 +249,46 @@ public class MainActivity extends AppCompatActivity {
             case R.id.q3a:
                 if (checked)
                     //Wrong
-                    score = score +0;
+                    if(counterQ3==0){
+                        score = score;}
+                    else if(counterQ3==1){
+                        score -=2;
+                        counterQ3 =0;}
                 break;
             case R.id.q3b:
                 if (checked)
                     // Wrong
-                    score = score +0;
+                    if(counterQ3==0){
+                        score = score;}
+                    else if(counterQ3==1){
+                        score -=2;
+                        counterQ3 =0;}
                 break;
             case R.id.q3c:
                 if (checked)
                     //Wrong
-                    score = score +0;
+                    if(counterQ3==0){
+                        score = score;}
+                    else if(counterQ3==1){
+                        score -=2;
+                        counterQ3 =0;}
+
                 break;
             case R.id.q3d:
                 if (checked)
                     //Right
-                    score = score +2;
+                    if(counterQ3==0){
+                        score = score +2;
+                        counterQ3 +=1;}
                 break;
         }
-        String scoreMessage = "Mark is " + score;
+
+        markingMessage(score);
         Log.v("MarkingActivity", scoreMessage);
 
     }
+
+    // sending email to parents//
 
     private String summaryScore (String name){
         sumUp = "Dear Mom/Dad;";
@@ -232,7 +296,7 @@ public class MainActivity extends AppCompatActivity {
         sumUp += score;
         sumUp += "\n";
         sumUp +="\n "+ "Give me a hug!";
-        sumUp +="\n" + "With Love" + yourName;
+        sumUp +="\n" + "With Love " + yourName;
         Log.v("SumUpActivity", sumUp);
         return sumUp;
     }
@@ -250,12 +314,14 @@ public class MainActivity extends AppCompatActivity {
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
         intent.putExtra(Intent.EXTRA_TEXT, sumUp);
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
-        intent.putExtra(Intent.EXTRA_EMAIL, yourEmail);
+        intent.putExtra(Intent.EXTRA_EMAIL, new String []{yourEmail});
 
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
     }
+
+    //finish//
 
     public void finish (View view){
 
@@ -263,7 +329,9 @@ public class MainActivity extends AppCompatActivity {
         summaryScore(yourName);
         if (hasEmail){
 
-        composeEmail(yourName+"'s Mark at LearnMath");}
+        composeEmail(yourName+"'s Mark at LearnMath");
+            finish();
+        }
 
         else{
             yourName="";
@@ -274,7 +342,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-
 
 }
