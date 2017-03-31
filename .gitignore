@@ -1,0 +1,280 @@
+package com.example.android.learnmath;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.Layout;
+import android.util.Log;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import static android.R.id.message;
+import static com.example.android.learnmath.R.id.exit;
+import static com.example.android.learnmath.R.id.mark;
+import static com.example.android.learnmath.R.id.submit;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    // Variables //
+
+    String yourName ="";
+    String yourEmail="";
+    String greetingMasage ="";
+    String sumUp ="yes";
+    String greetOne="";
+    int score =0;
+    boolean submitBotten =false;
+    boolean hasEmail= false;
+
+    public void PageMain (View view){
+
+        setContentView(R.layout.activity_main);
+    }
+
+    public void PageOne (View view){
+        yourName="";
+        yourEmail="";
+        score=0;
+        submitBotten=false;
+        setContentView(R.layout.page1);
+    }
+
+    public void PageTwo (View view){
+        if(!submitBotten){
+            Toast.makeText(this, "Please submit first!",Toast.LENGTH_SHORT).show();
+        }else{
+        setContentView(R.layout.page2);
+        displayGreeting(yourName);}
+    }
+
+    public void PageThree (View view){
+
+        setContentView(R.layout.page3);
+
+    }
+
+    public void PageFour (View view){
+
+        setContentView(R.layout.page4);
+
+    }
+
+    public void PageFive (View view){
+
+        setContentView(R.layout.page5);
+
+    }
+
+
+    public void last (View view){
+
+        setContentView(R.layout.last);
+        marking(score);
+        displayGreetingLast(yourName);
+
+        if(score >=3){
+        ImageView cookie = (ImageView)findViewById(R.id.calculator);
+        cookie.setImageResource(R.drawable.last);}
+        else{
+            ImageView cookie = (ImageView)findViewById(R.id.calculator);
+            cookie.setImageResource(R.drawable.sad);
+        }
+
+    }
+
+    private String name (){
+        EditText text = (EditText)findViewById(R.id.Name);
+        yourName = text.getText().toString();
+        return yourName;
+    }
+
+    private String email(){
+        EditText text = (EditText)findViewById(R.id.emailad);
+        yourEmail = text.getText().toString();
+
+        return yourEmail;
+    }
+
+
+    private void displayGreeting(String yourName) {
+        TextView GreetingTextView = (TextView) findViewById(R.id.greeting);
+        greetingMasage = "Hello "+ yourName +"!";
+        GreetingTextView.setText(greetingMasage);
+    }
+
+    private void displayGreetingLast(String yourName) {
+        TextView GreetingTextView = (TextView) findViewById(R.id.greetingLast);
+        greetingMasage = "Thank you "+ yourName +"!";
+        GreetingTextView.setText(greetingMasage);
+    }
+
+    public void submitInfo (View view)   {
+        submitBotten = true;
+        email();
+        name();
+        Log.v("NameActivity", yourName);
+        Log.v("EmailActivity", yourEmail);
+    }
+
+    private void marking (int score){
+        if (score >= 3){
+            greetOne = "You are Awesome";}
+        else{
+            greetOne = "It's better to try again";}
+
+        TextView mark = (TextView)findViewById(R.id.mark);
+        mark.setText("Your mark is: " + score + "/5 " + "\n" + greetOne);
+    }
+
+    public void checkAnswerQ1(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+        score=0;
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.q1a:
+                if (checked)
+                    //Wrong
+                    score = score +0;
+                    break;
+            case R.id.q1b:
+                if (checked)
+                    // Wrong
+                    score = score +0;
+                    break;
+            case R.id.q1c:
+                if (checked)
+                    //Right
+                    score = score +2;
+                    break;
+            case R.id.q1d:
+                if (checked)
+                    //Wrong
+                    score = score +0;
+                    break;
+        }
+        String scoreMessage = "Mark is" + score;
+        Log.v("MarkingActivity", scoreMessage);
+
+    }
+
+    public void checkAnswerQ2(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.q2a:
+                if (checked)
+                    //Wrong
+                    score = score +0;
+                break;
+            case R.id.q2b:
+                if (checked)
+                    // Right
+                    score = score +1;
+                break;
+
+        }
+        String scoreMessage = "Mark is" + score;
+        Log.v("MarkingActivity", scoreMessage);
+
+    }
+
+    public void checkAnswerQ3(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.q3a:
+                if (checked)
+                    //Wrong
+                    score = score +0;
+                break;
+            case R.id.q3b:
+                if (checked)
+                    // Wrong
+                    score = score +0;
+                break;
+            case R.id.q3c:
+                if (checked)
+                    //Wrong
+                    score = score +0;
+                break;
+            case R.id.q3d:
+                if (checked)
+                    //Right
+                    score = score +2;
+                break;
+        }
+        String scoreMessage = "Mark is " + score;
+        Log.v("MarkingActivity", scoreMessage);
+
+    }
+
+    private String summaryScore (String name){
+        sumUp = "Dear Mom/Dad;";
+        sumUp += "\n"+ " I did a quiz and this is my mark:";
+        sumUp += score;
+        sumUp += "\n";
+        sumUp +="\n "+ "Give me a hug!";
+        sumUp +="\n" + "With Love" + yourName;
+        Log.v("SumUpActivity", sumUp);
+        return sumUp;
+    }
+
+    public void Confirmation(View view){
+        CheckBox ConfirmationEmailCheckBox = (CheckBox)findViewById(R.id.ConfirmEmail);
+        hasEmail= ConfirmationEmailCheckBox.isChecked();
+        Log.v("ConfirmationActivity", "HasConfirmationEmail " + hasEmail);
+
+
+    }
+
+    public void composeEmail(String subject) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_TEXT, sumUp);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_EMAIL, yourEmail);
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
+    public void finish (View view){
+
+
+        summaryScore(yourName);
+        if (hasEmail){
+
+        composeEmail(yourName+"'s Mark at LearnMath");}
+
+        else{
+            yourName="";
+            yourEmail="";
+            score=0;
+//            System.exit(1);
+            finish();
+        }
+
+    }
+
+
+
+}
