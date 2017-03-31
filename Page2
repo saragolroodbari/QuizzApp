@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:src="@drawable/home"
+                android:scaleType="fitXY"
+                android:onClick="PageMain"
+                android:id="@+id/home"
+                />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/greeting"
+                android:text="Hello!"
+                android:layout_marginTop="8dp"
+                android:textColor="#E91E63"
+                android:textSize="24sp"
+                android:fontFamily="casual"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                />
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:src="@drawable/quit"
+                android:scaleType="fitXY"
+                android:id="@+id/exit"
+                android:layout_alignParentRight="true"
+                android:onClick="last"
+
+
+
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="153dp"
+        android:src="@drawable/two"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Put your math knowledge to the test with this fun math quiz for kids."
+            android:textSize="24sp"
+            android:layout_margin="32dp"
+            android:fontFamily="casual"
+            android:textStyle="bold"
+
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:fontFamily="casual"
+            android:textColor="#DCEDC8"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:onClick="PageOne"/>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ready?"
+            android:textStyle="bold"
+            android:fontFamily="casual"
+            android:textColor="#DCEDC8"
+            android:layout_weight="1"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:onClick="PageThree"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+    </ScrollView>
