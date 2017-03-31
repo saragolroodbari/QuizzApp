@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/page1">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:src="@drawable/home"
+                android:scaleType="fitXY"
+                android:onClick="PageMain"
+                android:id="@+id/home"
+                />
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="50dp"
+                android:src="@drawable/quit"
+                android:scaleType="fitXY"
+                android:id="@+id/grade"
+                android:layout_alignParentRight="true"
+                android:onClick="last"
+
+
+
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="153dp"
+        android:src="@drawable/two"
+        />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type Your name Here!"
+            android:textColorHint="#8BC34A"
+            android:textColor="#E91E63"
+            android:fontFamily="casual"
+            android:inputType="textCapWords"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/Name"
+
+
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type Your email Address Here!"
+            android:inputType="textCapWords"
+            android:textColorHint="#8BC34A"
+            android:textColor="#E91E63"
+            android:fontFamily="casual"
+            android:layout_marginLeft="32dp"
+            android:id="@+id/emailad"
+
+
+            />
+
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        >
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#DCEDC8"
+            android:layout_centerHorizontal="true"
+            android:text="Submit!"
+            android:layout_marginBottom="32dp"
+            android:fontFamily="casual"
+            android:id="@+id/submit"
+            android:onClick="submitInfo"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_margin="48dp"
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:fontFamily="casual"
+                android:textColor="#DCEDC8"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:layout_margin="16dp"
+                android:onClick="PageMain"/>
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                android:textColor="#DCEDC8"
+                android:layout_weight="1"
+                android:layout_margin="16dp"
+                android:onClick="PageTwo"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>
+</ScrollView>
